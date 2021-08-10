@@ -51,7 +51,6 @@ export default {
   },
   data() {
     return {
-      zoomInputClone: { ...this.zoomInput },
       zoomSlider: {
         heading: "ズーム",
         teleLowVelocity: "T",

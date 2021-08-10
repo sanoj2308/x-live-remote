@@ -33,7 +33,7 @@ const routes = [
     name: "GeneralPurposeMenu",
     component: () =>
       import(
-        /* webpackChunkName: "general-purpose-menu" */ "../views/general-purpose-selection-menu.vue"
+        /* webpackChunkName: "general-purpose-menu" */ "../views/general-purpose-selection-menu/parent.vue"
       ),
   },
   {

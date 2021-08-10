@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import ZoomSlider from "@/views/zoom-operation-slider/zoom-slider";
+import ZoomSlider from "./zoom-slider.vue";
 
 export default {
   name: "ZoomSliderParent",
@@ -48,12 +48,12 @@ export default {
   methods: {
     saveInput() {
       try {
-        this.zoomInput = JSON.parse(this.zoomInputString);
-      } catch (e) {
-        alert(e);
+        let parsedInput = JSON.parse(this.zoomInputString);
+        this.zoomInput = parsedInput;
+      } catch (exception) {
+        alert(exception);
         this.zoomInputString = "";
       }
-      console.log(this.zoomInput);
     },
     ZoomAction(_direction, _speed, _digitalZoom) {
       this.zoomOutput.direction = _direction;
