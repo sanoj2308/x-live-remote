@@ -57,13 +57,13 @@ header {
   font-family: Arial;
   span {
     letter-spacing: 0px;
-    &.tour {
+    &.x {
       color: #fff;
     }
-    &.of {
+    &.live {
       color: #ccc;
     }
-    &.heroes {
+    &.remote {
       color: $primary-light;
     }
   }

@@ -14,7 +14,6 @@
         <div class="statistics-sep" />
         <button class="save-input" @click="saveInput()">SAVE</button>
       </div>
-      <div class="statistics-sep" />
       <div class="statistics-output">
         <label class="statistics-label">OUTPUT</label>
         <div class="statistics-sep" />
@@ -44,7 +43,7 @@ export default {
     };
   },
   created() {
-    this.zoomInputString =  JSON.stringify(this.zoomInput, null, "\n ")
+    this.zoomInputString = JSON.stringify(this.zoomInput, null, "\n ");
   },
   methods: {
     saveInput() {

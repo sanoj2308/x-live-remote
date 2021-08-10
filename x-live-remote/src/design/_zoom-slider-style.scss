@@ -4,12 +4,6 @@ div.container {
   height: 400px;
 }
 
-div.outer {
-  display: flex;
-  width: 100%;
-  height: 400px;
-}
-
 div.slider-column {
   display: table-cell;
   margin-left: 55px;
@@ -19,6 +13,7 @@ div.slider-column {
 }
 
 div.statistics {
+  display: flex;
   margin-top: 55px;
   width: 100%;
   height: 600px;
@@ -70,7 +65,9 @@ div.statistics-input {
 }
 
 input.stat-input {
+  display: inline-block;
   background-color: rgb(95, 236, 149);
+  font-size: 16px;
   width: 100%;
   padding: 3%;
   border: 1px black solid;

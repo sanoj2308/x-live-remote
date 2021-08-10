@@ -9,9 +9,9 @@
       <i class="fab js-logo fa-vuejs fa-2x" aria-hidden="true" />
     </a>
     <div class="navbar-item nav-home">
-      <span class="tour">X</span>
-      <span class="of">LIVE</span>
-      <span class="heroes">REMOTE</span>
+      <span class="x">X</span>
+      <span class="live">LIVE</span>
+      <span class="remote">REMOTE</span>
     </div>
     <button
       class="link navbar-burger burger"
