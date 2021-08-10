@@ -17,7 +17,7 @@ const routes = [
     name: "ZoomGuide",
     component: () =>
       import(
-        /* webpackChunkName: "zoom-guide" */ "../views/zoom-guide.vue"
+        /* webpackChunkName: "zoom-guide" */ "../views/zoom-guide/parent.vue"
       ),
   },
   {
