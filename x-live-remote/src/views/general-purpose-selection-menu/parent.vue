@@ -16,7 +16,6 @@
 <script>
 import GeneralPurposeMenu from "./general-purpose-menu.vue";
 import StatisticsPanel from "@/components/statistics-panel.vue";
-
 import { data } from "../../shared";
 
 export default {

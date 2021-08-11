@@ -1,53 +1,47 @@
 <template>
   <div>
-    <zoom-guide v-bind:input="zoomInput"/>
-    <div class="statistics">
-      <div class="statistics-input">
-        <label class="statistics-label">INPUT</label>
-        <div class="statistics-sep" />
-        <input
-          class="stat-input"
-          type="text"
-          name="stat-input"
-          v-model="inputString"
-        />
-        <div class="statistics-sep" />
-        <button class="save-input" @click="updateInput()">SAVE</button>
-      </div>
-      <div class="statistics-sep" />
-    </div>
+    <zoom-guide v-bind:input="input" />
+    <StatisticsPanel
+      :inputString="inputString"
+      @save-action="saveInput"
+    />
   </div>
 </template>
 
 <script>
-import ZoomGuide from './zoom-guide.vue';
+import ZoomGuide from "./zoom-guide.vue";
+import StatisticsPanel from "@/components/statistics-panel.vue";
 
 export default {
-  name: "ZoomSliderParent",
+  name: "ZoomGuideParent",
   data() {
     return {
-      zoomInput: {
+      input: {
         zoomPosition: 0,
       },
-      inputString: ""
+      inputString: "",
     };
   },
   created() {
-    this.inputString =  JSON.stringify(this.zoomInput, null, "\n ")
+    this.loadInput();
+    
   },
   methods: {
-    updateInput() {
+    loadInput() {
+      this.inputString = JSON.stringify(this.input, null, "\n ");
+    },
+    saveInput(updatedString) {
       try {
-        this.zoomInput = JSON.parse(this.inputString);
-      } catch (e) {
-        alert(e);
-        this.inputString = "";
+        let parsedInput = JSON.parse(updatedString);
+        this.input = parsedInput
+      } catch (exception) {
+        alert(exception);
       }
-      console.log(this.zoomInput);
-    }
+    },
   },
   components: {
-    ZoomGuide
+    ZoomGuide,
+    StatisticsPanel,
   },
 };
 </script>
