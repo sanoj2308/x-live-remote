@@ -5,30 +5,18 @@
       @menu-action="menuAction"
       @setting-action="settingAction"
     />
-    <div class="statistics">
-      <div class="statistics-input">
-        <label class="statistics-label">INPUT</label>
-        <div class="statistics-sep" />
-        <input
-          class="stat-input"
-          type="text"
-          name="stat-input"
-          v-model="inputString"
-        />
-        <div class="statistics-sep" />
-        <button class="save-input" @click="saveInput()">SAVE</button>
-      </div>
-      <div class="statistics-output">
-        <label class="statistics-label">OUTPUT</label>
-        <div class="statistics-sep" />
-        {{ JSON.stringify(output, null, "\n ") }}
-      </div>
-    </div>
+    <StatisticsPanel
+      :inputString="inputString"
+      :outputString="outputString"
+      @save-action="saveInput"
+    />
   </div>
 </template>
 
 <script>
 import GeneralPurposeMenu from "./general-purpose-menu.vue";
+import StatisticsPanel from "@/components/statistics-panel.vue";
+
 import { data } from "../../shared";
 
 export default {
@@ -43,6 +31,7 @@ export default {
         detailedSetting: true,
       },
       inputString: "",
+      outputString: "",
       output: {
         selectionValue: 1,
         detailedSetting: true,
@@ -51,30 +40,33 @@ export default {
   },
   created() {
     this.loadInput();
-    this.inputString = JSON.stringify(this.input, null, "\n");
   },
   methods: {
     loadInput() {
       this.input.selectionItem = data.generalPurposeInput;
+      this.inputString = JSON.stringify(this.input, null, "\n");
+      this.outputString = JSON.stringify(this.output, null, "\n");
     },
-    saveInput() {
+    saveInput(updatedString) {
       try {
-        let parsedInput = JSON.parse(this.inputString);
+        let parsedInput = JSON.parse(updatedString);
         this.input = parsedInput;
       } catch (exception) {
         alert(exception);
-        this.inputString = "";
       }
     },
     menuAction(_selectionValue) {
       this.output.selectionValue = _selectionValue;
+      this.outputString = JSON.stringify(this.output, null, "\n");
     },
     settingAction(_detailedSetting) {
       this.output.detailedSetting = _detailedSetting;
+      this.outputString = JSON.stringify(this.output, null, "\n");
     },
   },
   components: {
     GeneralPurposeMenu,
+    StatisticsPanel,
   },
 };
 </script>

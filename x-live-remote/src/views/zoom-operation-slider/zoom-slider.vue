@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     zoomAction(_direction, _speed, _digitalZoom) {
-      this.$emit("action", _direction, _speed, _digitalZoom);
+      this.$emit("zoom-action", _direction, _speed, _digitalZoom);
     },
   },
 };

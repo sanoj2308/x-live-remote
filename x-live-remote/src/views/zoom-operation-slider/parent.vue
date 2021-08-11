@@ -1,41 +1,29 @@
 <template>
   <div>
-    <ZoomSlider :zoomInput="zoomInput" @action="ZoomAction" />
-    <div class="statistics">
-      <div class="statistics-input">
-        <label class="statistics-label">INPUT</label>
-        <div class="statistics-sep" />
-        <input
-          class="stat-input"
-          type="text"
-          name="stat-input"
-          v-model="zoomInputString"
-        />
-        <div class="statistics-sep" />
-        <button class="save-input" @click="saveInput()">SAVE</button>
-      </div>
-      <div class="statistics-output">
-        <label class="statistics-label">OUTPUT</label>
-        <div class="statistics-sep" />
-        {{ JSON.stringify(zoomOutput, null, "\n ") }}
-      </div>
-    </div>
+    <ZoomSlider :zoomInput="input" @zoom-action="ZoomAction" />
+    <StatisticsPanel
+      :inputString="inputString"
+      :outputString="outputString"
+      @save-action="saveInput"
+    />
   </div>
 </template>
 
 <script>
 import ZoomSlider from "./zoom-slider.vue";
+import StatisticsPanel from "@/components/statistics-panel.vue";
 
 export default {
   name: "ZoomSliderParent",
   data() {
     return {
-      zoomInput: {
+      input: {
         presence: true,
         digitalZoom: false,
       },
-      zoomInputString: "",
-      zoomOutput: {
+      inputString: "",
+      outputString: "",
+      output: {
         direction: "T",
         speed: 1,
         digitalZoom: false,
@@ -43,26 +31,31 @@ export default {
     };
   },
   created() {
-    this.zoomInputString = JSON.stringify(this.zoomInput, null, "\n ");
+    this.loadInput();
   },
   methods: {
-    saveInput() {
+    loadInput() {
+      this.inputString = JSON.stringify(this.input, null, "\n ");
+      this.outputString = JSON.stringify(this.output, null, "\n");
+    },
+    saveInput(updatedString) {
       try {
-        let parsedInput = JSON.parse(this.zoomInputString);
-        this.zoomInput = parsedInput;
+        let parsedInput = JSON.parse(updatedString);
+        this.input = parsedInput;
       } catch (exception) {
         alert(exception);
-        this.zoomInputString = "";
       }
     },
     ZoomAction(_direction, _speed, _digitalZoom) {
-      this.zoomOutput.direction = _direction;
-      this.zoomOutput.speed = _speed;
-      this.zoomOutput.digitalZoom = _digitalZoom;
+      this.output.direction = _direction;
+      this.output.speed = _speed;
+      this.output.digitalZoom = _digitalZoom;
+      this.outputString = JSON.stringify(this.output, null, "\n");
     },
   },
   components: {
     ZoomSlider,
+    StatisticsPanel,
   },
 };
 </script>
