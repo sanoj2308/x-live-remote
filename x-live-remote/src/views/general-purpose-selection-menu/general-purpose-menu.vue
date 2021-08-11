@@ -1,9 +1,12 @@
 <template>
   <div class="scrollable-container">
     <div class="scrollable-container-column">
-      <label class="selection-heading">
-        {{ input.title }}
-      </label>
+      <div class="selection-menu">
+        <label class="selection-heading">
+          {{ input.title }}
+        </label>
+      </div>
+
       <hr size="1" width="100%" color="lightgreen" />
       <div class="scrollable-column">
         <div class="scrollable-column-child">
@@ -13,7 +16,15 @@
             :key="item.id"
             @click="menuAction(item.id)"
           >
-            {{ item.text }}
+            <div class="" v-if="item.text">
+              {{ item.text }}
+            </div>
+            <div class="" v-if="item.class">
+              <span>
+                <img :src="item.class.icon" width="20" height="15" />
+                {{ item.class.name }}
+              </span>
+            </div>
           </li>
         </div>
       </div>

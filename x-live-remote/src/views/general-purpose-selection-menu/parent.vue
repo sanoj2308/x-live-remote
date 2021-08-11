@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     loadInput() {
-      this.input.selectionItem = data.generalPurposeInput;
+      this.input.selectionItem = data.generalPurposeClassInput;
       this.inputString = JSON.stringify(this.input, null, "\n");
       this.outputString = JSON.stringify(this.output, null, "\n");
     },

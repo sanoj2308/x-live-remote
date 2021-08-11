@@ -1,8 +1,7 @@
 div.scrollable-container {
-  display: flex;
+  display: block;
   width: 100%;
   height: 400px;
-  
 }
 
 div.scrollable-container-column {
@@ -11,7 +10,6 @@ div.scrollable-container-column {
   width: 100px;
   height: 400px;
   background-color: rgb(124, 122, 122);
-  
 }
 
 div.scrollable-column {
@@ -27,13 +25,13 @@ div.scrollable-column-child {
   top: 0;
   bottom: 0;
   left: 0;
-  right: -17px; /* Increase/Decrease this value for cross-browser compatibility */
+  right: -21px;
   overflow-y: scroll;
   background-color: rgb(124, 122, 122);
 }
 
 .selection-menu {
-  width:  100px;
+  width: 100px;
   height: 40px;
   text-decoration: none;
   text-align: center;
@@ -45,11 +43,11 @@ div.scrollable-column-child {
   cursor: pointer;
   outline: none;
   transition: 0.2s all;
-  list-style-type: none; 
+  list-style-type: none;
 }
 
 label.selection-heading {
-  width:  100px;
+  width: 100px;
   height: 40px;
   text-decoration: none;
   margin-left: 15px;
