@@ -1,3 +1,13 @@
+const zoomSliderData = [
+	{id:1, text: "T",  direction: "T", speed : 1, move: false },
+	{id:2, text: "^^", direction: "T", speed : 6, move: false },
+	{id:3, text: "^",  direction: "T", speed : 3, move: false },
+	{id:4, text: "=",  direction: "T", speed : 1, move: true },
+	{id:5, text: "v",  direction: "W", speed : 1, move: false },
+	{id:6, text: "vv", direction: "W", speed : 6, move: false },
+	{id:7, text: "W",  direction: "W", speed : 3, move: false },
+];
+
 const generalPurposeClassOne = {
   name: "one",
   icon: "https://img.icons8.com/ios/50/000000/a.png",
@@ -76,6 +86,7 @@ const generalPurposeClassInput = {
 };
 
 export const data = {
+  zoomSliderData,
   generalPurposeTextInput,
   generalPurposeClassInput,
 };

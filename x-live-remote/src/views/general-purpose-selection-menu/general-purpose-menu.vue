@@ -6,7 +6,6 @@
           {{ input.title }}
         </label>
       </div>
-
       <hr size="1" width="100%" color="lightgreen" />
       <div class="scrollable-column">
         <div class="scrollable-column-child">
